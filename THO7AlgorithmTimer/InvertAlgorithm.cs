@@ -33,8 +33,8 @@ namespace THO7AlgorithmTimerApplication
                     toInvert = returnImage.GetPixel(i, y);
                     returnImage.SetPixel(i, y, Color.FromArgb(toInvert.A, 255 - toInvert.R, 255 - toInvert.G, 255 - toInvert.B));
                 }
-            }*/
-/*
+            }*//*
+
             // Create a new bitmap.
             Bitmap bmp = new Bitmap(sourceImage);
 
@@ -70,16 +70,22 @@ namespace THO7AlgorithmTimerApplication
 
             return bmp;*/
             // Create a new bitmap.
-            Bitmap bmp = new Bitmap(sourceImage.Width, sourceImage.Height);
+            Bitmap bmp = new Bitmap(sourceImage.Width, sourceImage.Height, sourceImage.PixelFormat);
 
             // Lock the bitmap's bits.  
-            Rectangle rect = new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
+            //Rectangle rect = new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
+            Rectangle rect = new Rectangle(0, 0, sourceImage.Width/4, sourceImage.Height/4);
+            Rectangle rect1 = new Rectangle(sourceImage.Width / 4, sourceImage.Width / 4, sourceImage.Width / 4, sourceImage.Height / 4);
+            Rectangle rect2 = new Rectangle(0, sourceImage.Width / 4, sourceImage.Width / 4, sourceImage.Height / 4);
+            Rectangle rect3 = new Rectangle(sourceImage.Width / 4, 0, sourceImage.Width / 4, sourceImage.Height / 4);
+            
             System.Drawing.Imaging.BitmapData sourceImageData =
-                sourceImage.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite,
+                sourceImage.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly,
                 sourceImage.PixelFormat);
+
             System.Drawing.Imaging.BitmapData bmpData =
-                bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite,
-                bmp.PixelFormat);
+                bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly,
+                sourceImage.PixelFormat);
 
             // Get the address of the first line.
             IntPtr ptr = sourceImageData.Scan0;
@@ -87,26 +93,23 @@ namespace THO7AlgorithmTimerApplication
 
             // Declare an array to hold the bytes of the bitmap. 
             int bytes = Math.Abs(sourceImageData.Stride) * sourceImage.Height;
-            int bytes1 = Math.Abs(bmpData.Stride) * bmpData.Height;
             byte[] rgbValues = new byte[bytes];
-            byte[] rgbValues1 = new byte[bytes1];
 
             // Copy the RGB values into the array.
-            System.Runtime.InteropServices.Marshal.Copy(ptr2, rgbValues, 0, bytes);
             System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, bytes);
             
 
             // Set every third value to 255. A 24bpp bitmap will look red.   
             for (int counter = rgbValues.Length - 1; counter >= 0; counter -= 4)
             {
-                rgbValues[counter - 1] = (byte)(255 - rgbValues[counter - 1]);
-                rgbValues[counter - 2] = (byte)(255 - rgbValues[counter - 2]);
-                rgbValues[counter - 3] = (byte)(255 - rgbValues[counter - 3]);
+                rgbValues[counter] = (byte)(255 - rgbValues[counter]);
+                   rgbValues[counter - 1] = (byte)(255 - rgbValues[counter - 1]);
+                   rgbValues[counter - 2] = (byte)(255 - rgbValues[counter - 2]);
+                   rgbValues[counter - 3] = (byte)(255 - rgbValues[counter - 3]);
             }
 
             // Copy the RGB values back to the bitmap
             System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr2, bytes);
-            System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr, bytes);
 
             // Unlock the bits.
             bmp.UnlockBits(sourceImageData);

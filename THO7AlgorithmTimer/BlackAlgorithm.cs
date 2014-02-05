@@ -23,7 +23,9 @@ namespace THO7AlgorithmTimerApplication
         }*/
         public override System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap sourceImage)
         {
+            //Bitmap bmp2 = new Bitmap(sourceImage.Width, sourceImage.Height);
             Bitmap bmp = new Bitmap(sourceImage.Width, sourceImage.Height);
+            
             using (Graphics graph = Graphics.FromImage(bmp))
             {
                 Rectangle ImageSize = new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
