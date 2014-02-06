@@ -28,6 +28,7 @@ namespace THO7AlgorithmTimerApplication
             AlgorithmList.Add(new RotateAlgorithm("Rotate"));
             AlgorithmList.Add(new BlackAlgorithm("Black"));
             AlgorithmList.Add(new InvertAlgorithm("Invert"));
+            AlgorithmList.Add(new VideoAlgorithm("Video"));
             //Insert new Algorithms here
             /*          ^
             *          /|\
@@ -47,12 +48,14 @@ namespace THO7AlgorithmTimerApplication
         {
             OpenFileDialog oFD = new OpenFileDialog();
             oFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            oFD.Filter = "Image Files(*.BMP;*.JPG;*.JPEG;*.PNG;)|*.BMP;*.JPG;*.JPEG;*.PNG;";
+            oFD.Filter = "Image Files(*.BMP;*.JPG;*.JPEG;*.PNG;)|*.BMP;*.JPG;*.JPEG;*.PNG;|Video Files(*.mp4;)|*.mp4;";
             oFD.FilterIndex = 1;
             oFD.RestoreDirectory = true;
             if (oFD.ShowDialog() == DialogResult.OK)
             {
+
                 String CurrentFileName = Path.GetFullPath(oFD.FileName);
+
                 InputImage = new Bitmap(CurrentFileName);
                 InputPictureBox.Image = InputImage;
             }

@@ -6,9 +6,9 @@ using System.Drawing;
 
 namespace THO7AlgorithmTimerApplication
 {
-    class BlackAlgorithm : VisionAlgorithm
+    class VideoAlgorithm : VisionAlgorithm
     {
-        public BlackAlgorithm(String name) : base(name) { }
+        public VideoAlgorithm(String name) : base(name) { }
        /* public override System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap sourceImage)
         {
             Bitmap returnImage = new Bitmap(sourceImage);
