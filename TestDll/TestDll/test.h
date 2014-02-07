@@ -9,13 +9,13 @@
 
 #endif 
 
-class DLLDIR test
+/*class DLLDIR test
 {
 public:
 	test(void);
 	~test(void);
+	*/
+DLLDIR void hello();
+//	DLLDIR static void helloStatic();
 
-	void hello();
-	static void helloStatic();
-
-};
+//};

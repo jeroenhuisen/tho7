@@ -14,8 +14,8 @@ namespace THO7AlgorithmTimerApplication
 {
     public partial class MainForm : Form
     {
-        [DllImport("test")]
-        private static extern bool WritePrivateProfileString(string section, string key, string val, string filePath);
+        [DllImport("TestDll.dll")]
+        private static extern void hello();
         List<VisionAlgorithm> AlgorithmList = new List<VisionAlgorithm>();
         Stopwatch stopWatch;
 
@@ -23,6 +23,7 @@ namespace THO7AlgorithmTimerApplication
         Bitmap InputImage;
         public MainForm()
         {
+            hello();
             InitializeComponent();
             AlgorithmList.Add(new FlipAlgorithm("Flip"));
             AlgorithmList.Add(new RotateAlgorithm("Rotate"));

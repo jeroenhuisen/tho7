@@ -28,8 +28,9 @@ namespace THO7AlgorithmTimerApplication
             
             using (Graphics graph = Graphics.FromImage(bmp))
             {
-                Rectangle ImageSize = new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
-                graph.FillRectangle(Brushes.Black, ImageSize);
+                //Rectangle ImageSize = new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
+                //graph.FillRectangle(Brushes.Black, ImageSize);
+                graph.Clear(Color.Black);
             }
             return bmp;
         }
