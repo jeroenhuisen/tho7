@@ -14,7 +14,7 @@ namespace week2test
         {
             Image i = new Image(sourceImage);
             //sourceImage = i.invert();
-            sourceImage = i.size(3, 3);
+            sourceImage = i.size(1000, 1000);
 
 
             return sourceImage;
