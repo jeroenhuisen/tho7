@@ -4,20 +4,20 @@
 
 using namespace std;
 
-test::test(void)
+/*test::test(void)
 {
 }
 
 test::~test(void)
 {
-}
+}*/
 
-void test::hello()
+void hello()
 {
 	cout << "Hello World of DLL" << endl;
 }
 
-void test::helloStatic()
+void helloStatic()
 {
 	cout << "Hello World of DLL static" << endl;
 }
