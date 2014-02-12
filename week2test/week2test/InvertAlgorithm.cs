@@ -26,8 +26,8 @@ namespace THO7AlgorithmTimerApplication
                      returnImage.SetPixel(i, y, Color.FromArgb(toInvert.A, 255 - toInvert.R, 255 - toInvert.G, 255 - toInvert.B));
                  }
              }*/
-            /*Color toInvert;
-           
+           /*Color toInvert;
+
             for (int i = returnImage.Width - 1; i >= 0; i--)//forloop aftellend zijn sneller dan optellend volgens bart goes.
             {
                 for (int y = returnImage.Height - 1; y >= 0; y--)
@@ -37,7 +37,7 @@ namespace THO7AlgorithmTimerApplication
                 }
             }
             return returnImage;
-            }*/
+        }*/
             /*
              * //Based on http://msdn.microsoft.com/en-us/library/5ey6h79d(v=vs.110).aspx
 
@@ -110,7 +110,6 @@ namespace THO7AlgorithmTimerApplication
             // Copy the RGB values into the array.
             System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, bytes);
 
-
             // Set every third value to 255. A 24bpp bitmap will look red. 
             if (sourceImage.PixelFormat.ToString().Equals("Format24bppRgb"))
             {
@@ -132,7 +131,7 @@ namespace THO7AlgorithmTimerApplication
             thread2.Join();
             thread3.Join();
             thread4.Join();
-
+     
 
 
 
