@@ -18,8 +18,9 @@ namespace week2test
             imageOld = sourceImage;
         }
 
-        public Bitmap invert(){
-            
+        public Bitmap invert()
+        {
+
             Bitmap returnImage = new Bitmap(image.Width, image.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             Rectangle rect = new Rectangle(0, 0, image.Width, image.Height);
             System.Drawing.Imaging.BitmapData sourceData = image.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
@@ -69,32 +70,34 @@ namespace week2test
                     *p++ = ~(*p2++);
                 }
                 //
-                uint[] array = new uint[x*y];
+                uint[] array = new uint[x * y];
                 int amount = 0;
                 p2 = (uint*)ptrSource.ToPointer();
-                for(int i = 0; i < x; i++){
-                    for(int j = 0; j < y; j++){
+                for (int i = x; i > 0; --i)
+                {
+                    for (int j = y; j > 0; --j)
+                    {
                         array[amount] = *p2++;
                         amount++;
                     }
-                    p2 += (sourceData.Stride/4 - y);
+                    p2 += (sourceData.Stride / 4 - y);
                 }
                 //
                 p = (uint*)ptr.ToPointer();
                 amount = 0;
-                for (int i = 0; i < x; i++)
+                for (int i = x; i > 0; --i)
                 {
-                    for (int j = 0; j < y; j++)
+                    for (int j = y; j > 0; --j)
                     {
                         *p++ = array[amount];
                         amount++;
                     }
-                    p += (sourceData.Stride/4 - y);
+                    p += (sourceData.Stride / 4 - y);
                 }
-               
 
 
-             
+
+
                 //Console.WriteLine(*p);
             }
 
@@ -102,7 +105,58 @@ namespace week2test
             image.UnlockBits(sourceData);
             return returnImage;
         }
+        public uint[] mask(int x, int y, int xOffset, int yOffset)
+        {
+            Rectangle rect = new Rectangle(xOffset, yOffset, x, y);
+            System.Drawing.Imaging.BitmapData sourceData = image.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
+            IntPtr ptrSource = sourceData.Scan0;
 
+            unsafe
+            {
+                uint* p2 = (uint*)ptrSource.ToPointer();
+                uint[] array = new uint[x * y];
+                int amount = 0;
+                for (int i = x; i > 0; --i)
+                {
+                    for (int j = y; j > 0; --j)
+                    {
+                        array[amount] = *p2++;
+                        amount++;
+                    }
+                    p2 += (sourceData.Stride / 4 - y);
+                }
+                image.UnlockBits(sourceData);
+                return array;
+            }
+        }
+        public void write(uint[] input, int x, int y, int xOffset, int yOffset)
+        {
+            //under construction
+            Rectangle rect = new Rectangle(xOffset, yOffset, x, y);
+            System.Drawing.Imaging.BitmapData sourceData = image.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            IntPtr ptrSource = sourceData.Scan0;
+
+            unsafe
+            {
+                uint* p2 = (uint*)ptrSource.ToPointer();
+                int amount = 0;
+                for (int i = x; i > 0; --i)
+                {
+                    for (int j = y; j > 0; --j)
+                    {
+                        *p2++ = input[amount];
+                        amount++;
+                    }
+                    p2 += (sourceData.Stride / 4 - y);
+                }
+                image.UnlockBits(sourceData);
+            }
+        }
+        public Bitmap getImage()
+        {
+            return image;
+        }
     }
 }
