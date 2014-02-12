@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlackAlgorithm.cs" />
+    <Compile Include="BlackFastAlgorithm.cs" />
     <Compile Include="FlipAlgorithm.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="ImagePreviewForm.cs">
       <SubType>Form</SubType>
     </Compile>

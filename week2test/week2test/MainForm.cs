@@ -29,6 +29,7 @@ namespace week2test
             AlgorithmList.Add(new RotateAlgorithm("Rotate"));
             AlgorithmList.Add(new BlackAlgorithm("Black"));
             AlgorithmList.Add(new Median3x3Algorithm("Median3x3"));
+            AlgorithmList.Add(new BlackFastAlgorithm("BlackFast"));
             //AlgorithmList.Add(new InvertAlgorithm("Invert"));
             //AlgorithmList.Add(new VideoAlgorithm("Video"));
 

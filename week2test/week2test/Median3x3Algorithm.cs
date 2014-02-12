@@ -12,9 +12,12 @@ namespace week2test
         public Median3x3Algorithm(String name) : base(name) { }
         public override System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap sourceImage)
         {
-            Bitmap returnImage = new Bitmap(sourceImage);
-            returnImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            return returnImage;
+            Image i = new Image(sourceImage);
+            //sourceImage = i.invert();
+            sourceImage = i.size(300, 300);
+
+
+            return sourceImage;
         }
     }
 }
