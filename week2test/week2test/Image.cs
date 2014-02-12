@@ -73,26 +73,26 @@ namespace week2test
                 uint[] array = new uint[x * y];
                 int amount = 0;
                 p2 = (uint*)ptrSource.ToPointer();
-                for (int i = x; i > 0; --i)
+                for (int i = y; i > 0; --i)
                 {
-                    for (int j = y; j > 0; --j)
+                    for (int j = x; j > 0; --j)
                     {
                         array[amount] = *p2++;
                         amount++;
                     }
-                    p2 += (sourceData.Stride / 4 - y);
+                    p2 += (sourceData.Stride / 4 - x);
                 }
                 //
                 p = (uint*)ptr.ToPointer();
                 amount = 0;
-                for (int i = x; i > 0; --i)
+                for (int i = y; i > 0; --i)
                 {
-                    for (int j = y; j > 0; --j)
+                    for (int j = x; j > 0; --j)
                     {
                         *p++ = array[amount];
                         amount++;
                     }
-                    p += (sourceData.Stride / 4 - y);
+                    p += (sourceData.Stride / 4 - x);
                 }
 
 
@@ -117,14 +117,14 @@ namespace week2test
                 uint* p2 = (uint*)ptrSource.ToPointer();
                 uint[] array = new uint[x * y];
                 int amount = 0;
-                for (int i = x; i > 0; --i)
+                for (int i = y; i > 0; --i)
                 {
-                    for (int j = y; j > 0; --j)
+                    for (int j = x; j > 0; --j)
                     {
                         array[amount] = *p2++;
                         amount++;
                     }
-                    p2 += (sourceData.Stride / 4 - y);
+                    p2 += (sourceData.Stride / 4 - x);
                 }
                 image.UnlockBits(sourceData);
                 return array;
@@ -141,15 +141,16 @@ namespace week2test
             unsafe
             {
                 uint* p2 = (uint*)ptrSource.ToPointer();
+                p2 += sourceData.Stride / 4 * yOffset;
                 int amount = 0;
-                for (int i = x; i > 0; --i)
+                for (int i = y; i > 0; --i)
                 {
-                    for (int j = y; j > 0; --j)
+                    for (int j = x; j > 0; --j)
                     {
                         *p2++ = input[amount];
                         amount++;
                     }
-                    p2 += (sourceData.Stride / 4 - y);
+                    p2 += (sourceData.Stride / 4 - x);
                 }
                 image.UnlockBits(sourceData);
             }

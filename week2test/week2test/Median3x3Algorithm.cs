@@ -13,11 +13,12 @@ namespace week2test
         public override System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap sourceImage)
         {
             Image i = new Image(sourceImage);
-            //sourceImage = i.invert();
-            uint[] value = i.mask(1000, 1000, 0, 0);
+            sourceImage = i.invert();
+            sourceImage = i.size(100,1000);
+            uint[] value = i.mask(100, 1000, 0, 0);
 
-
-            return i.getImage();
+            return sourceImage;
+            //return i.getImage();
         }
     }
 }
