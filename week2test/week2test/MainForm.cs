@@ -10,7 +10,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace THO7AlgorithmTimerApplication
+namespace week2test
 {
     public partial class MainForm : Form
     {
@@ -28,8 +28,10 @@ namespace THO7AlgorithmTimerApplication
             AlgorithmList.Add(new FlipAlgorithm("Flip"));
             AlgorithmList.Add(new RotateAlgorithm("Rotate"));
             AlgorithmList.Add(new BlackAlgorithm("Black"));
-            AlgorithmList.Add(new InvertAlgorithm("Invert"));
-            AlgorithmList.Add(new VideoAlgorithm("Video"));
+            AlgorithmList.Add(new Median3x3Algorithm("Median3x3"));
+            //AlgorithmList.Add(new InvertAlgorithm("Invert"));
+            //AlgorithmList.Add(new VideoAlgorithm("Video"));
+
             //Insert new Algorithms here
             /*          ^
             *          /|\

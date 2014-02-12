@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace THO7AlgorithmTimerApplication
+namespace week2test
 {
 
     class InvertAlgorithm : VisionAlgorithm

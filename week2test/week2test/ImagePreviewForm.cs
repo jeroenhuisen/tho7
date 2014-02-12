@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace THO7AlgorithmTimerApplication
+namespace week2test
 {
     public partial class ImagePreviewForm : Form
     {

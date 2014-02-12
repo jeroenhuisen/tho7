@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace THO7AlgorithmTimerApplication
+namespace week2test
 {
     class BlackAlgorithm : VisionAlgorithm
     {

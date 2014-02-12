@@ -1,4 +1,4 @@
-﻿namespace THO7AlgorithmTimerApplication
+﻿namespace week2test
 {
     partial class MainForm
     {
