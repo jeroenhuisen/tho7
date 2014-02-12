@@ -14,8 +14,8 @@ namespace week2test
         private Bitmap imageOld;
         public Image(System.Drawing.Bitmap sourceImage)
         {
-            image = sourceImage;
-            imageOld = sourceImage;
+            image = new Bitmap(sourceImage);
+            imageOld = new Bitmap(sourceImage);
         }
 
         public Bitmap invert()
@@ -105,10 +105,10 @@ namespace week2test
             image.UnlockBits(sourceData);
             return returnImage;
         }
-        public uint[] mask(int x, int y, int xOffset, int yOffset)
+        public uint[] readMask(int x, int y, int xOffset, int yOffset)
         {
             Rectangle rect = new Rectangle(xOffset, yOffset, x, y);
-            System.Drawing.Imaging.BitmapData sourceData = image.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            System.Drawing.Imaging.BitmapData sourceData = imageOld.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
             IntPtr ptrSource = sourceData.Scan0;
 
@@ -126,7 +126,7 @@ namespace week2test
                     }
                     p2 += (sourceData.Stride / 4 - x);
                 }
-                image.UnlockBits(sourceData);
+                imageOld.UnlockBits(sourceData);
                 return array;
             }
         }
@@ -141,7 +141,7 @@ namespace week2test
             unsafe
             {
                 uint* p2 = (uint*)ptrSource.ToPointer();
-                p2 += sourceData.Stride / 4 * yOffset;
+                //p2 += sourceData.Stride / 4 * yOffset;
                 int amount = 0;
                 for (int i = y; i > 0; --i)
                 {
@@ -155,9 +155,29 @@ namespace week2test
                 image.UnlockBits(sourceData);
             }
         }
+        public void write(uint input, int xOffset, int yOffset)
+        {
+            //under construction
+            Rectangle rect = new Rectangle(xOffset, yOffset, 1, 1);
+            System.Drawing.Imaging.BitmapData sourceData = image.LockBits(rect, System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            IntPtr ptrSource = sourceData.Scan0;
+
+            unsafe
+            {
+                uint* p = (uint*)ptrSource.ToPointer();
+                //p2 += sourceData.Stride / 4 * yOffset;
+                *p = input;
+                image.UnlockBits(sourceData);
+            }
+        }
         public Bitmap getImage()
         {
             return image;
+        }
+        public Bitmap getNewImage()
+        {
+            return new Bitmap(image);
         }
     }
 }

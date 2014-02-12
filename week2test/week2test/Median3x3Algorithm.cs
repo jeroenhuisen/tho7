@@ -12,13 +12,33 @@ namespace week2test
         public Median3x3Algorithm(String name) : base(name) { }
         public override System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap sourceImage)
         {
-            Image i = new Image(sourceImage);
-            sourceImage = i.invert();
-            sourceImage = i.size(100,1000);
-            uint[] value = i.mask(100, 1000, 0, 0);
+            Image image = new Image(sourceImage);
+            //sourceImage = i.invert();
+            //sourceImage = i.size(100,1000);  
+            //return sourceImage;
 
-            return sourceImage;
-            //return i.getImage();
+            //value = new uint[value.Length];
+            //i.write(value, 100, 1000, 100, 50);
+
+            /*for (int j = 0; j < sourceImage.Height-2; j++)
+            {
+                for (int i = 0; i < sourceImage.Width-2; i++)
+                {
+                    uint[] value = image.mask(3, 3, i, j);
+                    // 0 t/m 2 is eerste 3
+                    // 3 t/m 5 is middelste
+                    // 6 t/m 8 is onderste
+                    Array.Sort(value);
+                    //middelste waarde staat op 5 nu;
+                    image.write(value[5], i+1, j+1);
+                }
+            }*/
+            uint[] value = image.readMask(3, 3, 0, 0);
+            for (int i = 0; i < 9; i++)
+            {
+                Console.WriteLine(value[i]);
+            }
+            return image.getImage();
         }
     }
 }
