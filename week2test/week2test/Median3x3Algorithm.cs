@@ -15,8 +15,7 @@ namespace week2test
             Image i = new Image(sourceImage);
             //sourceImage = i.invert();
             uint[] value = i.mask(1000, 1000, 0, 0);
-
-
+         
             return i.getImage();
         }
     }
