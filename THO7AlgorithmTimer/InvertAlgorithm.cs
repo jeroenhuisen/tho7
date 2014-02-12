@@ -140,7 +140,7 @@ namespace THO7AlgorithmTimerApplication
         }
         public void test2()
         {
-            for (int counter = rgbValues.Length / 4 * 3 - 1; counter >= rgbValues.Length / 2; counter -= 4)
+            for (int counter = rgbValues.Length / 4 * 2 - 1; counter >= rgbValues.Length / 4; counter -= 4)
             {
                 rgbValues[counter] = (byte)(255 - rgbValues[counter]);
                 rgbValues[counter - 1] = (byte)(255 - rgbValues[counter - 1]);
@@ -150,7 +150,7 @@ namespace THO7AlgorithmTimerApplication
         }
         public void test3()
         {
-            for (int counter = rgbValues.Length / 2 - 1; counter >= rgbValues.Length / 4; counter -= 4)
+            for (int counter = rgbValues.Length / 4 * 3 -1 ; counter >= rgbValues.Length / 4 * 2; counter -= 4)
             {
                 rgbValues[counter] = (byte)(255 - rgbValues[counter]);
                 rgbValues[counter - 1] = (byte)(255 - rgbValues[counter - 1]);
@@ -168,7 +168,6 @@ namespace THO7AlgorithmTimerApplication
                 rgbValues[counter - 3] = (byte)(255 - rgbValues[counter - 3]);
             }
         }
-
  
     }
 }
