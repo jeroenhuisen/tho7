@@ -24,12 +24,23 @@ namespace week2test
                     // 6 t/m 8 is onderste
                     Array.Sort(value);
                     //middelste waarde staat op 5 nu;
-                    image.write(value[5], i+1, j+1);
+                    image.setPixel(value[5], i+1, j+1);
                 }
             }*/
-            uint[] value = image.readMask(3, 3, 0, 0);
-            for (int i = 0; i < 9; i++)
+            
+            uint[] value = image.readMask(9, 9, 0, 0);
+            for (int i = 0; i < 81; i++)
             {
+                
+                image.setPixel(value[41], 3, 3);
+                Console.WriteLine(value[i]);
+            }
+            Console.WriteLine("ik verkloot nu de gegevens jeej");
+            Array.Sort(value);
+            for (int i = 0; i < 81; i++)
+            {
+
+                image.setPixel(value[41], 3, 3);
                 Console.WriteLine(value[i]);
             }
             return image.getImage();

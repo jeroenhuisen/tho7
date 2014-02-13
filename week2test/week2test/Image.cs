@@ -111,7 +111,6 @@ namespace week2test
             System.Drawing.Imaging.BitmapData sourceData = imageOld.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
             IntPtr ptrSource = sourceData.Scan0;
-
             unsafe
             {
                 uint* p2 = (uint*)ptrSource.ToPointer();
@@ -125,6 +124,7 @@ namespace week2test
                         //Console.WriteLine(*p2);
                         amount++;
                     }
+                    //Console.WriteLine("done");
                     p2 += (sourceData.Stride / 4 - x);
                 }
                 //Console.WriteLine("done");
@@ -157,7 +157,7 @@ namespace week2test
                 image.UnlockBits(sourceData);
             }
         }
-        public void write(uint input, int xOffset, int yOffset)
+        public void setPixel(uint input, int xOffset, int yOffset)
         {
             //under construction
             Rectangle rect = new Rectangle(xOffset, yOffset, 1, 1);
