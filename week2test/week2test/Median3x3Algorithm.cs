@@ -14,7 +14,7 @@ namespace week2test
         {
             Image image = new Image(sourceImage);
 
-            /*for (int j = 0; j < sourceImage.Height-2; j++)
+            for (int j = 0; j < sourceImage.Height-2; j++)
             {
                 for (int i = 0; i < sourceImage.Width-2; i++)
                 {
@@ -22,27 +22,27 @@ namespace week2test
                     // 0 t/m 2 is eerste 3
                     // 3 t/m 5 is middelste
                     // 6 t/m 8 is onderste
-                    Array.Sort(value);
+                    uint[] red = new uint[9];
+                    uint[] green = new uint[9];
+                    uint[] blue = new uint[9];
+                    for (int z = 0; z < 9; z++ )
+                    {
+                        red[z] = (value[z] & 0xFF0000) >> 16;
+                        green[z] = (value[z] & 0xFF00) >> 8;
+                        blue[z] = value[z] & 0xFF;
+                    }
+                    Array.Sort(red);
+                    Array.Sort(green);
+                    Array.Sort(blue);
+                    uint red5 = red[5] << 16;
+                    uint green5 = green[5] << 8;
+                    uint blue5 = blue[5];
+                    uint total = red5+green5+blue5;
                     //middelste waarde staat op 5 nu;
-                    image.setPixel(value[5], i+1, j+1);
+                    image.setPixel(total, i+1, j+1);
                 }
-            }*/
-            
-            uint[] value = image.readMask(9, 9, 0, 0);
-            for (int i = 0; i < 81; i++)
-            {
-                
-                image.setPixel(value[41], 3, 3);
-                Console.WriteLine(value[i]);
             }
-            Console.WriteLine("ik verkloot nu de gegevens jeej");
-            Array.Sort(value);
-            for (int i = 0; i < 81; i++)
-            {
-
-                image.setPixel(value[41], 3, 3);
-                Console.WriteLine(value[i]);
-            }
+           
             return image.getImage();
         }
     }

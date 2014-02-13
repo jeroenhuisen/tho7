@@ -15,7 +15,7 @@ namespace week2test
         public Image(System.Drawing.Bitmap sourceImage)
         {
             image = new Bitmap(sourceImage);
-            imageOld = new Bitmap(sourceImage);
+            imageOld = new Bitmap(image);
         }
 
         public Bitmap invert()
