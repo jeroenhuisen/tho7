@@ -13,18 +13,12 @@ namespace week2test
         public override System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap sourceImage)
         {
             Image image = new Image(sourceImage);
-            //sourceImage = i.invert();
-            //sourceImage = i.size(100,1000);  
-            //return sourceImage;
-
-            //value = new uint[value.Length];
-            //i.write(value, 100, 1000, 100, 50);
 
             /*for (int j = 0; j < sourceImage.Height-2; j++)
             {
                 for (int i = 0; i < sourceImage.Width-2; i++)
                 {
-                    uint[] value = image.mask(3, 3, i, j);
+                    uint[] value = image.readMask(3, 3, i, j);
                     // 0 t/m 2 is eerste 3
                     // 3 t/m 5 is middelste
                     // 6 t/m 8 is onderste

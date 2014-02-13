@@ -57,7 +57,7 @@ namespace week2test
             IntPtr ptr = bmpData.Scan0;
             IntPtr ptrSource = sourceData.Scan0;
 
-            Console.WriteLine(bmpData.Stride);
+            //Console.WriteLine(bmpData.Stride);
             int nrOfInts = (Math.Abs(sourceData.Stride) * returnImage.Height) / 4;
 
             unsafe
@@ -122,10 +122,12 @@ namespace week2test
                     for (int j = x; j > 0; --j)
                     {
                         array[amount] = *p2++;
+                        //Console.WriteLine(*p2);
                         amount++;
                     }
                     p2 += (sourceData.Stride / 4 - x);
                 }
+                //Console.WriteLine("done");
                 imageOld.UnlockBits(sourceData);
                 return array;
             }
