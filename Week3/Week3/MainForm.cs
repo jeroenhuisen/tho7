@@ -10,12 +10,11 @@ using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace week2test
+namespace Week3
 {
     public partial class MainForm : Form
     {
-        [DllImport("TestDll.dll")]
-        private static extern void hello();
+
         List<VisionAlgorithm> AlgorithmList = new List<VisionAlgorithm>();
         Stopwatch stopWatch;
 
@@ -23,7 +22,6 @@ namespace week2test
         Bitmap InputImage;
         public MainForm()
         {
-            //hello();
             InitializeComponent();
             AlgorithmList.Add(new FlipAlgorithm("Flip"));
             AlgorithmList.Add(new RotateAlgorithm("Rotate"));
@@ -35,6 +33,7 @@ namespace week2test
             //AlgorithmList.Add(new Median11x11FasterAlgorithm("Median11x11faster"));
             //AlgorithmList.Add(new Median11x11Faster2Algorithm("Median11x11faster2"));
             AlgorithmList.Add(new Median11x11v2Algorithm("Median11x11v2"));
+            AlgorithmList.Add(new Class1("testDll"));
            
             //AlgorithmList.Add(new InvertAlgorithm("Invert"));
             //AlgorithmList.Add(new VideoAlgorithm("Video"));

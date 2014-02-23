@@ -15,7 +15,10 @@ public:
 	test(void);
 	~test(void);
 	*/
-DLLDIR void hello();
+extern "C"{
+	DLLDIR void hello();
+	DLLDIR void editImage(int * source, int * target, int height, int width, int stride);
+}
 //	DLLDIR static void helloStatic();
 
 //};

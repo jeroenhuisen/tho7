@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace week2test
+namespace Week3
 {
     class Median3x3Algorithm : VisionAlgorithm
     {
