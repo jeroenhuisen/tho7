@@ -14,6 +14,8 @@ namespace Week3
         private static extern void hello();
         [DllImport("TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void editImage(IntPtr source, IntPtr target, int height, int width, int stride);
+         [DllImport("TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void filterHistogram(IntPtr source, IntPtr target, int value, int height, int width, int stride);
         public override System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap sourceImage)
         {
             Bitmap returnImage = new Bitmap(sourceImage.Width, sourceImage.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
@@ -33,7 +35,8 @@ namespace Week3
             IntPtr ptr = sourceImageData.Scan0;
             IntPtr ptr2 = bmpData.Scan0;
             int nrOfInts = (Math.Abs(bmpData.Stride) * returnImage.Height) / 4;
-            editImage(ptr, ptr2, sourceImage.Height, sourceImage.Width, Math.Abs(sourceImageData.Stride));
+            //editImage(ptr, ptr2, sourceImage.Height, sourceImage.Width, Math.Abs(sourceImageData.Stride));
+            filterHistogram(ptr, ptr2, 11, sourceImage.Height, sourceImage.Width, Math.Abs(sourceImageData.Stride));
             sourceImage.UnlockBits(sourceImageData);
             returnImage.UnlockBits(bmpData);
             return returnImage;

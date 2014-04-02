@@ -18,6 +18,7 @@ public:
 extern "C"{
 	DLLDIR void hello();
 	DLLDIR void editImage(int * source, int * target, int height, int width, int stride);
+	DLLDIR void filterHistogram(int * source, int * target, int value, int height, int width, int stride);
 }
 //	DLLDIR static void helloStatic();
 
